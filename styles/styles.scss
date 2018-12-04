@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700');
+@import url('https://fonts.googleapis.com/css?family=Kalam:700');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: 'Noto Sans SC', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    .card {
+        width: 600px;
+        height: 350px;
+        position: relative;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+        box-shadow: 2px 2px 3px rgba(0,0,0,0.4), 4px 7px 18px rgba(0,0,0,0.2);
+        cursor: pointer;
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        .card-face-front {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 1em;
+        }
+        .card-face-back {
+            background: lightgray;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 1em;
+        }
+    }
+    .card.is-flipped {
+        transform: rotateY(180deg);
+        box-shadow: -2px 2px 5px rgba(0,0,0,0.4), -4px 7px 18px rgba(0,0,0,0.2);
+    }
+
+
+    .add-card-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 20px 35px;
+        border-radius: 10px;
+        background-color: #2d3436;
+        color: white;
+        font-size: 16px;
+        box-shadow: inset -3px -3px #636e72;
+        border: none;
+        outline: none;
+        margin: 1em;
+        font-weight: 700;
+        cursor: pointer;
+        &:hover {
+            transform: translateY(1px);
+            background-color: #3b4547;
+            box-shadow: none;
+        }
+    }
+
+    .delete-cards {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 1em;
+        background-color: #d63031;
+        color: white;
+        font-weight: 700;
+        padding: 20px 35px;
+        border-radius: 10px;
+        font-size: 16px;
+        box-shadow: inset -3px -3px #636e72;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        &:hover {
+            transform: translateY(1px);
+            background-color: #dd4747;
+            box-shadow: none;
+        }
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.7);
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 99;
+        animation: 0.5s fadeIn linear;
+
+        .close-overlay {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            top: 0;
+            right: 0;
+            margin: 1em;
+            background-color: rgba(0,0,0,0.2);
+            cursor: pointer;
+            svg {
+                fill: white;
+                width: 30px;
+                height: 30px;
+            }
+            &:hover {
+                background-color: black;
+            }
+        }
+
+        .add-card-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: auto;
+
+            #front-card-input, #back-card-input {
+                width: 600px;
+                resize: none;
+                outline: none;
+                height: 350px;
+                font-family: 'Kalam', cursive;
+                background-color: white;
+                font-size: 25px;
+                box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+                padding: 2em;
+            }
+            #back-card-input {
+                margin-top: 10px;
+            }
+            #submit-new-card-form {
+                padding: 20px 35px;
+                -webkit-appearance: button;
+                margin: 10px 0 0;
+                font-weight: bold;
+                font-size: 16px;
+                cursor: pointer;
+                color: white;
+                background-color: black;
+                border-radius: 5px;
+                &:hover {
+                    background-color: white;
+                    color: black;
+                }
+            }
+        }
+    }
+
+    .card-container {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+
+        .left-arrow, .right-arrow {
+            padding: 10px 5px;
+            background-color: rgba(0,0,0,0.1);
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            margin: 1em;
+            cursor: pointer;
+            svg {
+                width: 35px;
+                height: 35px;
+                fill: black;
+            }
+            &:hover {
+                background-color: rgba(0,0,0,0.4);
+            }
+            &:hover > svg {
+                fill: white;
+            }
+        }
+    }
+} // END BODY
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,700");
+@import url("https://fonts.googleapis.com/css?family=Kalam:700");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: 'Noto Sans SC', sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+body .card {
+  width: 600px;
+  height: 350px;
+  position: relative;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4), 4px 7px 18px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4), 4px 7px 18px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+body .card .card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+body .card .card-face-front {
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 1em;
+}
+
+body .card .card-face-back {
+  background: lightgray;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 1em;
+}
+
+body .card.is-flipped {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  -webkit-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4), -4px 7px 18px rgba(0, 0, 0, 0.2);
+          box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.4), -4px 7px 18px rgba(0, 0, 0, 0.2);
+}
+
+body .add-card-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 35px;
+  border-radius: 10px;
+  background-color: #2d3436;
+  color: white;
+  font-size: 16px;
+  -webkit-box-shadow: inset -3px -3px #636e72;
+          box-shadow: inset -3px -3px #636e72;
+  border: none;
+  outline: none;
+  margin: 1em;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+body .add-card-button:hover {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+  background-color: #3b4547;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body .delete-cards {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1em;
+  background-color: #d63031;
+  color: white;
+  font-weight: 700;
+  padding: 20px 35px;
+  border-radius: 10px;
+  font-size: 16px;
+  -webkit-box-shadow: inset -3px -3px #636e72;
+          box-shadow: inset -3px -3px #636e72;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+body .delete-cards:hover {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+  background-color: #dd4747;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 99;
+  -webkit-animation: 0.5s fadeIn linear;
+          animation: 0.5s fadeIn linear;
+}
+
+body .overlay .close-overlay {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  top: 0;
+  right: 0;
+  margin: 1em;
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+body .overlay .close-overlay svg {
+  fill: white;
+  width: 30px;
+  height: 30px;
+}
+
+body .overlay .close-overlay:hover {
+  background-color: black;
+}
+
+body .overlay .add-card-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+body .overlay .add-card-form #front-card-input, body .overlay .add-card-form #back-card-input {
+  width: 600px;
+  resize: none;
+  outline: none;
+  height: 350px;
+  font-family: 'Kalam', cursive;
+  background-color: white;
+  font-size: 25px;
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  padding: 2em;
+}
+
+body .overlay .add-card-form #back-card-input {
+  margin-top: 10px;
+}
+
+body .overlay .add-card-form #submit-new-card-form {
+  padding: 20px 35px;
+  -webkit-appearance: button;
+  margin: 10px 0 0;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+}
+
+body .overlay .add-card-form #submit-new-card-form:hover {
+  background-color: white;
+  color: black;
+}
+
+body .card-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body .card-container .left-arrow, body .card-container .right-arrow {
+  padding: 10px 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 1em;
+  cursor: pointer;
+}
+
+body .card-container .left-arrow svg, body .card-container .right-arrow svg {
+  width: 35px;
+  height: 35px;
+  fill: black;
+}
+
+body .card-container .left-arrow:hover, body .card-container .right-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+body .card-container .left-arrow:hover > svg, body .card-container .right-arrow:hover > svg {
+  fill: white;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
