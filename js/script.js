@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cardContainer.innerHTML = `<div class = "card">
         <div class="card-face card-face-front">
             <h3>${currentCard.front}</h3>
+            <i class="fas fa-edit edit-card"></i>
         </div>
         <div class="card-face card-face-back">
             <h3>${currentCard.back}</h3>
